@@ -54,7 +54,7 @@ const Hero = () => {
 		<div className='max-w-[1200px] mx-auto bg-[#F5F5F580] h-[450px] my-[12px] relative '>
 			<Swiper
 				spaceBetween={30}
-				centeredSlides={true}	
+				centeredSlides={true}
 				autoplay={{
 					delay: 2500,
 					disableOnInteraction: false,
