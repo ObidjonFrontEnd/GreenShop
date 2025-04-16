@@ -16,11 +16,11 @@ const Menu = () => {
 		<div
 			className={`${
 				anchorEl ? '' : 'translate-x-full'
-			} w-full h-[100vh] px-[60px] bg-white py-[24px] left-0 z-50 top-0 pt-[90px] absolute duration-[0.5s]`}
+			} w-full h-[100vh] px-[60px] bg-white py-[24px] left-0 z-50 top-0 pt-[90px] fixed duration-[0.5s]`}
 		>
 			<CloseIcon className='absolute top-[24px] right-[16px]' onClick={close} />
 			{/* <MenuNoAuth /> */}
-			<MenuAuth/>
+			<MenuAuth />
 		</div>
 	)
 }
