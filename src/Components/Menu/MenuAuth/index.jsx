@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const MenuAuth = () => {
 	return (
-		<div className='flex flex-col justify-between h-full'>
+		<div className='flex flex-col justify-between h-full pb-[50px]'>
 			<div className='font-inter'>
 				<h2 className='mb-[16px] text-[#46A358] text-[24px] font-medium tracking-[0.07px] leading-[100%]'>
 					Profile
