@@ -41,7 +41,15 @@
   background-color: #22c55e; 
   transform: scale(1.2);
 }
+.active{
+	color:#46A358;
+	font-weight: 700;
+	border-left: 5px solid #46A358;
+}
 
 .active1{
 	color:#46A358;
+}
+.custom-tabs .ant-tabs-ink-bar {
+  background-color: #46A358 !important;
 }
