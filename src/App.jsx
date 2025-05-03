@@ -10,6 +10,7 @@ import WishList from './pages/userPofil/wishlist'
 import Profil from './pages/userPofil/Profil'
 
 import UserPofil from './pages/userPofil'
+import Shoping from './pages/shoping'
 
 function App() {
 	return (
@@ -25,6 +26,7 @@ function App() {
 							<Route path='/profil/wishlist' element={<WishList />} />
 							<Route path='/profil/address' element={<Address />} />
 						</Route>
+						<Route path='/product-card' element={<Shoping/>}  />
 					</Route>
 					<Route path='/auth' element={<Auth />} />
 				</Routes>
