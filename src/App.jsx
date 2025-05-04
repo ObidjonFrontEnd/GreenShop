@@ -11,6 +11,7 @@ import Profil from './pages/userPofil/Profil'
 
 import UserPofil from './pages/userPofil'
 import Shoping from './pages/shoping'
+import ProductCheckout from './pages/productCheckout'
 
 function App() {
 	return (
@@ -27,6 +28,8 @@ function App() {
 							<Route path='/profil/address' element={<Address />} />
 						</Route>
 						<Route path='/product-card' element={<Shoping/>}  />
+						<Route path='/product-checkout' element={<ProductCheckout/>}  />
+
 					</Route>
 					<Route path='/auth' element={<Auth />} />
 				</Routes>
