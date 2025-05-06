@@ -1,66 +1,91 @@
-import React from 'react'
-import { Card, Typography, Row, Col } from 'antd'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Card, Typography, Row, Col, Spin } from 'antd';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import DetailedOrderModal from './orderDetailModal'
 
 
-const { Title, Text } = Typography
-
-const orders = [
-  {
-    id: 'bee7e26c986a1d',
-    date: 'Sat May 03 2025',
-    total: '$1199.98',
-  },
-  {
-    id: 'bee7e26c98744b',
-    date: 'Sat May 03 2025',
-    total: '$12',
-  },
-  {
-    id: 'bee7e26c987a83',
-    date: 'Sat May 03 2025',
-    total: '$0',
-  },
-]
-
+const { Title, Text } = Typography;
 
 const TrackOrder = () => {
-	return (
-		<div className="p-4 sm:p-6 w-full mx-auto">
-      <Title level={4} className="text-black">Track your Orders</Title>
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
-      <div className="grid gap-4 mt-4">
-        {orders.map((order) => (
-          <Card
-            key={order.id}
-            className="rounded-lg shadow-sm border border-gray-200"
-            bodyStyle={{ padding: '16px' }}
-          >
-            <Row gutter={[16, 16]} className="text-black">
-              <Col xs={24} sm={12} md={6}>
-                <Text className="block font-medium">Order Number</Text>
-                <Text strong>{order.id}</Text>
-              </Col>
-              <Col xs={24} sm={12} md={6}>
-                <Text className="block font-medium">Date</Text>
-                <Text strong>{order.date}</Text>
-              </Col>
-              <Col xs={24} sm={12} md={6}>
-                <Text className="block font-medium">Total</Text>
-                <Text strong>{order.total}</Text>
-              </Col>
-              <Col xs={24} sm={12} md={6}>
-                <Text className="block font-medium">More</Text>
-                <Link to={`/orders/${order.id}`}>
-                  <Text className="text-green-600">Get details</Text>
-                </Link>
-              </Col>
-            </Row>
-          </Card>
-        ))}
-      </div>
+  const fetchOrders = async () => {
+    const response = await axios.get(
+      `https://green-shop-backend.onrender.com/api/order/get-order?access_token=6803bab0f2a99d0247959f21`
+    );
+    return response.data;
+  };
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['orders'],
+    queryFn: fetchOrders,
+  });
+
+  const handleOpenModal = (order) => {
+    setSelectedOrder(order);
+    setModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
+    setSelectedOrder(null);
+  };
+
+  return (
+    <div className="p-4 sm:p-6 w-full mx-auto">
+      <Title level={4} className="text-black">Track Your Orders</Title>
+
+      {isLoading ? (
+        <div className="flex justify-center mt-10">
+          <Spin size="large" />
+        </div>
+      ) : (
+        <div className="grid gap-4 mt-4">
+          {data?.data?.map((order) => (
+            <Card
+              key={order?._id}
+              className="rounded-lg shadow-sm border border-gray-200"
+              bodyStyle={{ padding: '16px' }}
+            >
+              <Row gutter={[16, 16]} className="text-black">
+                <Col xs={24} sm={12} md={6}>
+                  <Text className="block font-medium">Order Number</Text>
+                  <Text strong>{order?._id}</Text>
+                </Col>
+                <Col xs={24} sm={12} md={6}>
+                  <Text className="block font-medium">Date</Text>
+                  <Text strong>{order?.shop_list[0]?.created_at}</Text>
+                </Col>
+                <Col xs={24} sm={12} md={6}>
+                  <Text className="block font-medium">Total</Text>
+                  <Text strong>${order?.extra_shop_info?.total_price}</Text>
+                </Col>
+                <Col xs={24} sm={12} md={6}>
+                  <Text className="block font-medium">Details</Text>
+                  <Text
+                    className="text-green-600 cursor-pointer"
+                    onClick={() => handleOpenModal(order)}
+                  >
+                    View
+                  </Text>
+                </Col>
+              </Row>
+            </Card>
+          ))}
+
+          {selectedOrder && (
+            <DetailedOrderModal
+              visible={modalVisible}
+              onCancel={handleCloseModal}
+              order={selectedOrder}
+            />
+          )}
+        </div>
+      )}
     </div>
-	)
-}
+  );
+};
 
-export default TrackOrder
+export default TrackOrder;
