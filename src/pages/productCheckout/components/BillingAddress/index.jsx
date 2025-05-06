@@ -7,14 +7,11 @@ const { Option } = Select
 
 const BillingAddress = () => {
 	const cart = useSelector(state => state?.shopping.data)
-	console.log(cart)
+
 
 	const onFinish = async values => {
 		const order = {
-			shop_list: cart.map(item => ({
-				shop_id: item._id,
-				quantity: item.count,
-			})),
+			shop_list: cart,
 			billing_address: {
 				first_name: values.firstName,
 				last_name: values.lastName,

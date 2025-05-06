@@ -11,10 +11,22 @@ const DetailedOrderModal = ({ visible, onCancel, order }) => {
 	const date = items[0]?.created_at || 'No data'
 	
 	
-	const deleteOrder = async (id)=>{
-		
-		const respons = await axios.delete('https://green-shop-backend.onrender.com/api/order/delete-order?access_token=6803bab0f2a99d0247959f21' , {_id:id,})
-		
+	
+	const deleteOrder = async (id) => {
+		try {
+			const response = await axios.delete(
+				'https://green-shop-backend.onrender.com/api/order/delete-order?access_token=6803bab0f2a99d0247959f21',
+				{
+					data: {
+						_id: id,
+					},
+				}
+			)
+			console.log('Заказ удалён:', response.data)
+			onCancel() 
+		} catch (error) {
+			console.error('Ошибка при удалении заказа:', error)
+		}
 	}
 	
 
@@ -27,9 +39,9 @@ const DetailedOrderModal = ({ visible, onCancel, order }) => {
 				<Button key='cancel' onClick={onCancel}>
 					Cancel
 				</Button>,
-				<Button key='delete' danger onClick={()=>{deleteOrder(order?._id)}}>
+				<button  className='px-[20px] rounded-[10px] ml-[10px] py-[5px] text-red-500 border-[1px] border-red-500' onClick={()=>{deleteOrder(order?._id)}}>
 					Delete
-				</Button>,
+				</button>,
 			]}
 			width={600}
 			title={<Title level={4}>Order Details</Title>}
