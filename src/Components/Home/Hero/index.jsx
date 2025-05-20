@@ -51,7 +51,7 @@ const Hero = () => {
 	}
 
 	return (
-		<div className='max-w-[1200px] mx-auto bg-[#F5F5F580] h-[450px] my-[12px] relative '>
+		<header className='max-w-[1200px] mx-auto bg-[#F5F5F580] h-[450px] my-[12px] relative '>
 			<Swiper
 				spaceBetween={30}
 				centeredSlides={true}
@@ -106,7 +106,7 @@ const Hero = () => {
 				</div>
 			</Swiper>
 			<div className='custom-pagination mt-4 flex justify-center gap-2 absolute bottom-[17px]  z-[40] ' />
-		</div>
+		</header>
 	)
 	//
 }

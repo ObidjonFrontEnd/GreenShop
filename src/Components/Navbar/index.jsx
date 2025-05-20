@@ -82,7 +82,7 @@ const Navigation = () => {
 	]
 
 	return (
-		<div className='flex px-[15px] md:px-[0] justify-between items-center md:border-b-[#46A35880] pb-[18px] md:border-b-[0.3px]'>
+		<nav className='flex px-[15px] md:px-[0] justify-between items-center md:border-b-[#46A35880] pb-[18px] md:border-b-[0.3px]'>
 			<div className='logo'>
 				<Link to='/'>
 					<img src='/logo.png' alt='Logo' />
@@ -159,7 +159,7 @@ const Navigation = () => {
 					<MenuIcon sx={{ fontSize: 30 }} className='' onClick={open} />
 				</div>
 			</div>
-		</div>
+		</nav>
 	)
 }
 

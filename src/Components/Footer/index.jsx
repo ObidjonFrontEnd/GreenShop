@@ -7,11 +7,11 @@ import FooterNav from './Nav'
 
 const Footer = () => {
 	return (
-		<div>
+		<footer>
 			<Join />	
 			<Contacts/>
 			<FooterNav/>
-		</div>
+		</footer>
 	)
 }
 
