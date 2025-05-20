@@ -10,11 +10,13 @@ import { useDispatch } from 'react-redux'
 import apiAxios from '../../../api/api'
 import { login } from '../../../redux/reduxers/AutheSlice'
 import { closeModal } from '../../../redux/reduxers/authSlice'
+import { useTranslation } from 'react-i18next'
 
 const SignIN = () => {
-	const [showPassword, setShowPassword] = useState(false)
+	const [ , setShowPassword] = useState(false)
 	const dispatch = useDispatch()
 	const handleClickShowPassword = () => setShowPassword(show => !show)
+	const { t } = useTranslation()
 
 	const postData = async (email, password) => {
 		try {
@@ -56,27 +58,27 @@ const SignIN = () => {
 			layout='vertical'
 		>
 			<div className='font-inter text-[13px] leading-[16px] mb-[16px] text-[#3d3d3d] mt-[53px]'>
-				<h2>Enter your username and password to login.</h2>
+				<h2>{t("titleLogin")}</h2>
 			</div>
 
 			<Form.Item
-				label='Email'
+				label={t("Email")}
 				name='email'
 				rules={[
 					{ required: true, message: 'Please input your email!' },
 					{ type: 'email', message: 'Invalid email format!' },
 				]}
 			>
-				<Input placeholder='Enter your email' className='h-[40px]' />
+				<Input placeholder={t("EnterYourEmail")} className='h-[40px]' />
 			</Form.Item>
 
 			<Form.Item
-				label='Password'
+				label={t("Password")}
 				name='password'
 				rules={[{ required: true, message: 'Please input your password!' }]}
 			>
 				<Input.Password
-					placeholder='Enter your password'
+					placeholder={t("EnterYourPassword")}
 					className='h-[40px]'
 					iconRender={visible =>
 						visible ? (
@@ -89,18 +91,18 @@ const SignIN = () => {
 			</Form.Item>
 
 			<p className='text-end font-normal text-[#46A358] text-[14px] mb-[20px] leading-[16px] cursor-pointer'>
-				Forgot Password?
+				{t("ForgotPassword")}
 			</p>
 
 			<Form.Item>
 				<button className='h-[45px] w-full bg-[#46A358] font-inter font-bold text-[16px] leading-[16px] text-white rounded-[5px]'>
-					Login
+					{t("Login")}
 				</button>
 			</Form.Item>
 
 			<div className='text-[#3d3d3d] text-[13px] leading-[16px] mb-[27px] font-inter flex items-center'>
 				<div className='w-full bg-[#EAEAEA] h-[1px]'></div>
-				<p className='text-nowrap px-[10px] bg-white'>Or login with</p>
+				<p className='text-nowrap px-[10px] bg-white'>{t("Orloginwith")}</p>
 				<div className='w-full bg-[#EAEAEA] h-[1px]'></div>
 			</div>
 
@@ -111,7 +113,7 @@ const SignIN = () => {
 						className='h-[40px] gap-[10px] flex items-center'
 					>
 						<GoogleOutlined />
-						Login with Google
+						{t("LoginWithGoogle")}
 					</button>
 
 					<button
@@ -119,7 +121,7 @@ const SignIN = () => {
 						className='h-[40px] gap-[10px] flex items-center'
 					>
 						<FacebookOutlined />
-						Login with Facebook
+						{t("LoginWithFacebook")}
 					</button>
 				</div>
 			</div>

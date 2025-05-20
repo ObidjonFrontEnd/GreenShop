@@ -1,8 +1,11 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const NoProfuct = () => {
 	const nav = useNavigate()
+		const { t } = useTranslation()
+	
 	return (
 		<div className='w-full h-full'>
 			<div className='flex flex-col justify-center h-full items-center'>
@@ -51,8 +54,8 @@ const NoProfuct = () => {
 					</g>
 				</svg>
 				<div className="text-center grid gap-[15px] mt-[15px]">
-					<h2>No data</h2>
-					<button className='bg-[#46A538] py-[10px] px-[10px] font-bold rounded-[8px] text-white text-[16px]' onClick={()=>{nav('/')}}  >LET'S SHOP</button>
+					<h2>{t("No data")}</h2>
+					<button className='bg-[#46A538] py-[10px] px-[10px] font-bold rounded-[8px] text-white text-[16px]' onClick={()=>{nav('/')}}  >{t("LET'S SHOP")}</button>
 				</div>
 			</div>
 		</div>

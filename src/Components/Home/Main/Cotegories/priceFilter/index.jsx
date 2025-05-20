@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import Slider from '@mui/material/Slider'
 import { Button } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 const PriceFilter = () => {
+	const { t } = useTranslation()
+	
 	const [price, setPrice] = useState([0, 1000])
 	const submit = async event => {
 		event.preventDefault()
@@ -10,7 +13,7 @@ const PriceFilter = () => {
 	return (
 		<div className='pt-[36px] pb-[46px]'>
 			<div className='font-bold font-inter text-[18px] leading-[16px] mb-[20px] '>
-				<h2>Price Range</h2>
+				<h2>{t("PriceRange")}</h2>
 			</div>
 			<form action='' className='w-full px-[30px]' onSubmit={submit}>
 				<Slider
@@ -21,7 +24,7 @@ const PriceFilter = () => {
 					max={1000}
 				/>
 				<p className='text-[15px] leading-[16px] font-inter'>Price: <span className='text-[#46A358] font-bold'>${price[0]} - ${price[1]}</span></p>
-				<Button type='submit' variant="contained" sx={{marginTop:'16px', borderRadius:"6px" , height:"35px"}} >Filter</Button>
+				<Button type='submit' variant="contained" sx={{marginTop:'16px', borderRadius:"6px" , height:"35px"}} >{t("Filter")}</Button>
 			</form>
 		</div>
 	)

@@ -4,11 +4,13 @@ import SignIN from './Signin'
 import SignUp from './Signup'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeModal } from '../../redux/reduxers/authSlice'
+import { useTranslation } from 'react-i18next'
 
 const MyModal = () => {
 	const dispatch = useDispatch()
 	const isOpen = useSelector(state => state.modal.isOpen)
 	const [activeTab, setActiveTab] = useState('1')
+	const { t } = useTranslation()
 
 	const handleTabChange = key => {
 		setActiveTab(key)
@@ -25,7 +27,7 @@ const MyModal = () => {
 						color: activeTab === '1' ? '#46A358' : '#3d3d3d',
 					}}
 				>
-					Login
+					{t("Login")}
 				</span>
 			),
 			key: '1',
@@ -38,7 +40,7 @@ const MyModal = () => {
           fontSize: '20px',
           lineHeight: '16px',
           color: activeTab === '2' ? '#46A358' : '#3d3d3d',
-        }}>Register</span>
+        }}> {t("Register")}</span>
 			),
 			key: '2',
 			children: <SignUp />,

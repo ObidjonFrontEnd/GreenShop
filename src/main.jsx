@@ -8,7 +8,7 @@ import OpenProvider from './ContexApi/Context.jsx'
 import './index.css'
 import { Store } from './redux/store.js'
 import theme from './theme.js'
-
+import "./i18n";
 const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')).render(

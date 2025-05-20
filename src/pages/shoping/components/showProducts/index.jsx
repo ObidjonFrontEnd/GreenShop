@@ -8,6 +8,7 @@ import {
 
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 import NoProfuct from '../noProduct'
+import { useTranslation } from 'react-i18next'
 
 const ShowShopProducts = () => {
 	const carts = useSelector(state => state.shopping?.data || [])
@@ -22,6 +23,7 @@ const ShowShopProducts = () => {
 	const handleDelete = product => {
 		dispatch(deleteFlowerFromShopping(product))
 	}
+	const { t } = useTranslation()
 
 	return (
 		<div className='w-full'>
@@ -29,16 +31,16 @@ const ShowShopProducts = () => {
 				<thead className=''>
 					<tr className='font-bold text-[16px]'>
 						<td className='py-[15px] border-b-[1px] border-b-[#46A538]'>
-							Products
+							{t("Products")}
 						</td>
 						<td className='py-[15px] border-b-[1px] border-b-[#46A538]'>
-							Price
+							{t("Price")}
 						</td>
 						<td className='py-[15px] border-b-[1px] border-b-[#46A538]'>
-							Quantity
+							{t("Quantity")}
 						</td>
 						<td className='py-[15px] border-b-[1px] border-b-[#46A538]'>
-							Total
+							{t("Total")}
 						</td>
 						<td className='py-[15px] border-b-[1px] border-b-[#46A538]'></td>
 					</tr>

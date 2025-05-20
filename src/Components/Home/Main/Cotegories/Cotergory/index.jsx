@@ -3,12 +3,15 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import useGetApi from '../../../../../hooks/Get'
 import { useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const Cotegory = () => {
 	const defolArr = useSelector(state => state.defoldArr.defoldArr)
 	const { data, isLoading} = useGetApi('/api/flower/category')
 	const [searchParams , setSearchParams] = useSearchParams()
 	const cotegory = searchParams.get('cotegory') || 'house-plants'
+	const { t } = useTranslation()
+	
 
 	const changCategory = (cotegory)=>{
 		searchParams.set('cotegory' , cotegory)
@@ -18,7 +21,7 @@ const Cotegory = () => {
 	return (
 		<div className=''>
 			<div className='title text-[#3D3D3D] font-bold text-[18px] leading-[16px]'>
-				Categories
+				{t("Categories")}
 			</div>
 			<div className='pl-[12px]  mt-[14px]'>
 				{isLoading ? (

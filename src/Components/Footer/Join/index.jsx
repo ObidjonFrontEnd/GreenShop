@@ -7,8 +7,11 @@ import { inputBaseClasses } from '@mui/material/InputBase'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const Join = () => {
+		const { t } = useTranslation()
+	
 	return (
 		<div className='font-inter flex flex-col md:flex-row items-center gap-y-[30px] bg-[#FBFBFB] py-[32px] md:px-[23px] px-[15px]'>
 			<Card sx={{ bgcolor: 'transparent' }}>
@@ -29,11 +32,10 @@ const Join = () => {
 								fontFamily: 'inter',
 							}}
 						>
-							Garden Care
+							{t("GardenCare")}
 						</Typography>
 						<Typography variant='body2' sx={{ color: 'text.secondary' }}>
-							We are an online plant shop offering a wide range of cheap and
-							trendy plants.
+							{t("Lorem")}
 						</Typography>
 					</CardContent>
 				</CardActionArea>
@@ -57,11 +59,10 @@ const Join = () => {
 								fontFamily: 'inter',
 							}}
 						>
-							Plant Renovation
+							{t("PlantRenovation")}
 						</Typography>
 						<Typography variant='body2' sx={{ color: 'text.secondary' }}>
-							We are an online plant shop offering a wide range of cheap and
-							trendy plants.
+							{t("Lorem")}
 						</Typography>
 					</CardContent>
 				</CardActionArea>
@@ -85,11 +86,10 @@ const Join = () => {
 								fontFamily: 'inter',
 							}}
 						>
-							Watering Graden
+							{t("WateringGraden")}
 						</Typography>
 						<Typography variant='body2' sx={{ color: 'text.secondary' }}>
-							We are an online plant shop offering a wide range of cheap and
-							trendy plants.
+							{t("Lorem")}
 						</Typography>
 					</CardContent>
 				</CardActionArea>
@@ -97,12 +97,12 @@ const Join = () => {
 
 			<div className='card md:px-[15px] text-start'>
 				<h2 className='text-[#3D3D3D] font-bold text-[18px] leading-[16px]'>
-					Would you like to join newsletters?
+					{t("Join")}
 				</h2>
 				<div className='mt-[18px] flex justify-start'>
 					<TextField
 						id='standard-suffix-shrink'
-						label='enter your email address...'
+						label={t("JoinInput")}
 						variant='standard'
 						color='white'
 						slotProps={{
@@ -134,9 +134,7 @@ const Join = () => {
 					<Button variant='contained'>Join</Button>
 				</div>
 				<p className='text-[#727272] text-[13px] leading-[22px] font-inter mt-[17px]'>
-					We usually post offers and challenges in newsletter. We’re your online
-					houseplant destination. We offer a wide range of houseplants and
-					accessories shipped directly from our (green)house to yours!
+					{t("Lorem2")}
 				</p>
 			</div>
 		</div>

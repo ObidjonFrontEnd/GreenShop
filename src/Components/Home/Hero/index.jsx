@@ -1,30 +1,30 @@
 import React, { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 const Hero = () => {
+	const { t } = useTranslation()
+	
 	const heroSlider = [
 		{
-			greetings: 'WELCOME TO GREENSHOP',
-			title: "LET'S MAKE A BETTER PLANET",
-			content:
-				'We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!',
+			greetings:  t("Greetings"),
+			title: t("HeroTitle"),
+			content:t("Lorem2"),
 			img: '/slider1.png',
 		},
 		{
-			greetings: 'WELCOME TO GREENSHOP',
-			title: "LET'S LIVE IN A BETTER PLANET",
-			content:
-				'We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!',
+			greetings: t("Greetings"),
+			title: t("HeroTitle2"),
+			content:t("Lorem2"),
 			img: '/slider1.png',
 		},
 		{
-			greetings: 'WELCOME TO GREENSHOP',
-			title: "LET'S OBSERVE A BETTER PLANET",
-			content:
-				'We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!',
+			greetings: t("Greetings"),
+			title: t("HeroTitle3"),
+			content:t("Lorem2"),
 			img: '/slider1.png',
 		},
 	]

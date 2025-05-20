@@ -14,6 +14,9 @@ import { setAnchorEl } from '../../redux/reduxers/menuSlice'
 import { openModal } from '../../redux/reduxers/authSlice'
 import { selectUserInfo } from '../../redux/reduxers/selectUserInfo'
 import { getter } from '../../hooks/localStorej'
+import { useTranslation } from 'react-i18next'
+import { DownOutlined, SmileOutlined } from '@ant-design/icons'
+import { Dropdown, Space } from 'antd'
 
 const CartBadge = styled(Badge)`
 	& .${badgeClasses.badge} {
@@ -25,8 +28,16 @@ const CartBadge = styled(Badge)`
 const Navigation = () => {
 	const dispatch = useDispatch()
 	const { token, name } = useSelector(selectUserInfo)
-	const cart = useSelector((state) => state.shopping?.data || []) 
+	const cart = useSelector(state => state.shopping?.data || [])
 	const nav = useNavigate()
+	const { t, i18n } = useTranslation()
+	const [currentLang, setCurrentLang] = useState(i18n.language || 'en');
+	
+
+	const changeLang = lang => {
+		i18n.changeLanguage(lang)
+		setCurrentLang(lang);
+	}
 
 	const open = () => {
 		dispatch(setAnchorEl(true))
@@ -38,6 +49,37 @@ const Navigation = () => {
 		const cardArr = getter({ key: 'shopping_card' }) || []
 		setCardCount(cardArr)
 	}, [cart])
+
+	const items = [
+		{
+			key: '1',
+			label: (
+				<button onClick={() => changeLang("en")}>
+					En
+				</button>
+			),
+		},
+		{
+			key: '2',
+			label: (
+				<button onClick={() => changeLang("ru")}>
+					Ru
+				</button>
+			),
+	
+		
+		},
+		{
+			key: '3',
+			label: (
+				<button onClick={() => changeLang("uz")}>
+					Uz
+				</button>
+			),
+			
+		},
+	
+	]
 
 	return (
 		<div className='flex px-[15px] md:px-[0] justify-between items-center md:border-b-[#46A35880] pb-[18px] md:border-b-[0.3px]'>
@@ -51,20 +93,26 @@ const Navigation = () => {
 				<li>
 					<IconButton>
 						<Link to='/' className='text-[16px]'>
-							Home
+							{t("Home")}
 						</Link>
 					</IconButton>
 				</li>
 				<li>
 					<IconButton>
 						<Link to='/' className='text-[16px]'>
-							Blog
+							{t("Blog")}
 						</Link>
 					</IconButton>
 				</li>
 			</ul>
 
 			<div className='flex gap-[30px] items-center'>
+			<Dropdown menu={{ items }} trigger={['click']}>
+      <Space>
+        {currentLang.toUpperCase()} <DownOutlined />
+      </Space>
+    </Dropdown>
+
 				<IconButton>
 					<SearchIcon sx={{ fontSize: 30 }} />
 				</IconButton>
@@ -72,7 +120,11 @@ const Navigation = () => {
 				<Link to={'/product-card'}>
 					<IconButton>
 						<ShoppingCartIcon sx={{ fontSize: 30 }} />
-						<CartBadge badgeContent={cardCount.length} color='primary' overlap='circular' />
+						<CartBadge
+							badgeContent={cardCount.length}
+							color='primary'
+							overlap='circular'
+						/>
 					</IconButton>
 				</Link>
 
@@ -97,6 +149,7 @@ const Navigation = () => {
 								dispatch(openModal())
 							}}
 						>
+							{t("Login")}
 							<LoginIcon />
 						</Button>
 					)}

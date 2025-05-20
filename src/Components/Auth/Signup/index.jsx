@@ -9,11 +9,13 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import apiAxios from '../../../api/api'
 import { closeModal } from '../../../redux/reduxers/authSlice'
+import { useTranslation } from 'react-i18next'
 
 const SignUp = () => {
-	const [showPassword, setShowPassword] = useState(false)
+	const [ , setShowPassword] = useState(false)
 	const dispatch = useDispatch()
 	const handleClickShowPassword = () => setShowPassword(show => !show)
+	const { t } = useTranslation()
 
 	const postData = async (email, password, name, surname) => {
 		try {
@@ -58,43 +60,43 @@ const SignUp = () => {
 			layout='vertical'
 		>
 			<div className='font-inter text-[13px] leading-[16px] mb-[16px] text-[#3d3d3d] mt-[53px]'>
-				<h2>Enter your details to sign up.</h2>
+				<h2>{t("TitleRegister")}</h2>
 			</div>
 
 			<Form.Item
-				label='Name'
+				label={t("Name")}
 				name='name'
 				rules={[{ required: true, message: 'Please input your name!' }]}
 			>
-				<Input placeholder='Enter your first name' className='h-[40px]' />
+				<Input placeholder={t("EnterYourFirstName")} className='h-[40px]' />
 			</Form.Item>
 
 			<Form.Item
-				label='Surname'
+				label={t("Surname")}
 				name='surname'
 				rules={[{ required: true, message: 'Please input your surname!' }]}
 			>
-				<Input placeholder='Enter your surname' className='h-[40px]' />
+				<Input placeholder={t("EnterYourSurname")} className='h-[40px]' />
 			</Form.Item>
 
 			<Form.Item
-				label='Email'
+				label={t("Email")}
 				name='email'
 				rules={[
 					{ required: true, message: 'Please input your email!' },
 					{ type: 'email', message: 'Invalid email format!' },
 				]}
 			>
-				<Input placeholder='Enter your email' className='h-[40px]' />
+				<Input placeholder={t("EnterYourEmail")} className='h-[40px]' />
 			</Form.Item>
 
 			<Form.Item
-				label='Password'
+				label={t("Password")}
 				name='password'
 				rules={[{ required: true, message: 'Please input your password!' }]}
 			>
 				<Input.Password
-					placeholder='Enter your password'
+					placeholder={t("EnterYourPassword")}
 					className='h-[40px]'
 					iconRender={visible =>
 						visible ? (
@@ -108,13 +110,13 @@ const SignUp = () => {
 
 			<Form.Item>
 				<button className='h-[45px] w-full bg-[#46A358] font-inter font-bold text-[16px] leading-[16px] text-white rounded-[5px]'>
-					Sign Up
+					{t("SignUp")}
 				</button>
 			</Form.Item>
 
 			<div className='text-[#3d3d3d] text-[13px] leading-[16px] mb-[27px] font-inter flex items-center'>
 				<div className='w-full bg-[#EAEAEA] h-[1px]'></div>
-				<p className='text-nowrap px-[10px] bg-white'>Or sign up with</p>
+				<p className='text-nowrap px-[10px] bg-white'>{t("Orloginwith")}</p>
 				<div className='w-full bg-[#EAEAEA] h-[1px]'></div>
 			</div>
 
@@ -125,7 +127,7 @@ const SignUp = () => {
 						className='h-[40px] gap-[10px] flex items-center'
 					>
 						<GoogleOutlined />
-						Sign Up with Google
+						{t("LoginWithGoogle")}
 					</button>
 
 					<button
@@ -133,7 +135,7 @@ const SignUp = () => {
 						className='h-[40px] gap-[10px] flex items-center'
 					>
 						<FacebookOutlined />
-						Sign Up with Facebook
+						{t("LoginWithFacebook")}
 					</button>
 				</div>
 			</div>
