@@ -15,6 +15,7 @@ import {
 	selectTabValue,
 	setTabValue,
 } from '../../../../../redux/reduxers/tabsSlice'
+import { useTranslation } from 'react-i18next'
 
 function CustomTabPanel(props) {
 	const { children, value, index, ...other } = props
@@ -46,6 +47,7 @@ function a11yProps(index) {
 }
 
 const ProductSort = () => {
+	const { t } = useTranslation()
 
 	const value = useSelector(selectTabValue)
 	const dispatch = useDispatch()
@@ -92,14 +94,14 @@ const ProductSort = () => {
 							onChange={handleChange}
 							aria-label='basic tabs example'
 						>
-							<Tab label='All Plants' {...a11yProps(0)} />
-							<Tab label='New Arrivvals' {...a11yProps(1)} />
-							<Tab label='Sale' {...a11yProps(2)} />
+							<Tab label={t("All Plants")} {...a11yProps(0)} />
+							<Tab label={t("New Arrivvals")} {...a11yProps(1)} />
+							<Tab label={t("Sale")} {...a11yProps(2)} />
 						</Tabs>
 					</Box>
 					<div className='w-120px lg:block hidden'>
 						<FormControl fullWidth>
-							<InputLabel id='demo-simple-select-label'>Sort by:</InputLabel>
+							<InputLabel id='demo-simple-select-label'>{t("Sort by")}:</InputLabel>
 							<Select
 								labelId='demo-simple-select-label'
 								id='demo-simple-select'
@@ -110,9 +112,9 @@ const ProductSort = () => {
 								}}
 								className='min-w-[160px] outline-none'
 							>
-								<MenuItem value={'default-sorting'}>Default sorting</MenuItem>
-								<MenuItem value={'the-cheapest'}>The Cheapest</MenuItem>
-								<MenuItem value={'most-expensive'}>Most Expensive</MenuItem>
+								<MenuItem value={'default-sorting'}>{t("Default sorting")}</MenuItem>
+								<MenuItem value={'the-cheapest'}> {t("The Cheapest")} </MenuItem>
+								<MenuItem value={'most-expensive'}>{t("Most Expensive")}</MenuItem>
 							</Select>
 						</FormControl>
 					</div>

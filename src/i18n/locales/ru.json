@@ -53,5 +53,13 @@
   "LET'S SHOP": "ДАВАЙТЕ ПОКУПАТЬ",
   "Products": "Товары",
   "Price": "Цена",
-  "Quantity": "Количество"
+  "Quantity": "Количество",
+    "All Plants": "Все растения",
+  "New Arrivvals": "Новинки",
+  "Sale": "Распродажа",
+  "Sort by": "Сортировать по",
+  "Default sorting": "Сортировка по умолчанию",
+  "The Cheapest": "Самые дешевые",
+  "Most Expensive": "Самые дорогие"
+
 }

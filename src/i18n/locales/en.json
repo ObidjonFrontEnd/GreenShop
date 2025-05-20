@@ -53,5 +53,12 @@
   "LET'S SHOP": "LET'S SHOP",
   "Products":"Products",
   "Price":"Price",
-  "Quantity":"Quantity"
+  "Quantity":"Quantity",
+  "All Plants":"All Plants",
+  "New Arrivvals":"New Arrivvals",
+  "Sale":"Sale",
+  "Sort by":"Sort by",
+  "Default sorting":"Default sorting",
+  "The Cheapest":"The Cheapest",
+  "Most Expensive":"Most Expensive"
 }
