@@ -12,7 +12,7 @@ const CardTotal = () => {
 	return (
 		<div>
 			<div className='flex items-center py-[20px] border-b-[1px] border-b-[#46A538] text-[16px] font-bold'>
-				<h2>{t("CardTotal")}</h2>
+				<h1>{t("CardTotal")}</h1>
 			</div>
 			<div className='py-[30px]'>
 				<form action=''>

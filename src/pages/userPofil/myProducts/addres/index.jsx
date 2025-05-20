@@ -10,7 +10,7 @@ const Address = () => {
   }
 	return (
 		<div className="p-4 sm:p-6 w-full mx-auto">
-		<h2 className="text-lg font-semibold mb-2 text-black">Billing Address</h2>
+		<h1 className="text-lg font-semibold mb-2 text-black">Billing Address</h1>
 		<p className="mb-6 text-black">
 			The following addresses will be used on the checkout page by default.
 		</p>

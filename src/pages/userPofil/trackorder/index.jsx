@@ -35,7 +35,7 @@ const TrackOrder = () => {
 
   return (
     <div className="p-4 sm:p-6 w-full mx-auto">
-      <Title level={4} className="text-black">Track Your Orders</Title>
+      <h1><Title level={4} className="text-black">Track Your Orders</Title></h1>
 
       {isLoading ? (
         <div className="flex justify-center mt-10">

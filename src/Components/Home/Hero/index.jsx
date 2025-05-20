@@ -71,9 +71,9 @@ const Hero = () => {
 					<SwiperSlide key={idx}>
 						<div className='flex items-center justify-between h-full px-10 font-inter '>
 							<div className='max-w-[600px] relative z-50'>
-								<p className='text-[#564545] text-[11px] md:text-[14px] uppercase tracking-[10%] leading-[16px] font-medium mb-2 bg-white md:bg-transparent w-fit inline-block '>
+								<h1 className='text-[#564545] text-[11px] md:text-[14px] uppercase tracking-[10%] leading-[16px] font-medium mb-2 bg-white md:bg-transparent w-fit inline-block '>
 									{slide.greetings}
-								</p>
+								</h1>
 								{renderTitle(slide.title)}
 								<p className='text-[#727272] text-[14px] leading-[24px] md:bg-transparent bg-[#ffffff5f] font-normal w-fit inline-block md:w-full'>
 									{slide.content}
